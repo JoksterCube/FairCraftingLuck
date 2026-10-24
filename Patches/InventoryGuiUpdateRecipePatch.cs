@@ -46,9 +46,9 @@ internal static class InventoryGuiUpdateRecipePatch
         if (mode == CraftingLuckMode.NoBonus) return null;
         int perRoll = CraftBonusCalculator.BonusPerLuckyRoll(mode, recipe.m_amount, skillFactor);
         return LuckOddsText.Format(
-            skillFactor * PluginConfig.BonusChance.Value,
+            skillFactor * CraftBonus.LuckChance(gui),
             perRoll,
             rolls,
-            PluginConfig.StackMultiCraftBonus.IsOn());
+            CraftBonus.StackLuckyRolls());
     }
 }

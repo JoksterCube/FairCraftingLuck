@@ -9,7 +9,7 @@ internal static class Constants
     internal static class Plugin
     {
         internal const string ModName = "FairCraftingLuck";
-        internal const string ModVersion = "1.0.1";
+        internal const string ModVersion = "1.1.0";
         internal const string Author = "JoksterCube";
         internal const string ModGUID = $"{Author}.{ModName}";
         internal const string Description = "Lucky crafts give a whole extra batch: 10 extra nails instead of 1. Choose Fair, Level Based, Vanilla or no bonus; servers can enforce it.";
@@ -49,11 +49,19 @@ internal static class Constants
         {
             internal const string Group = "2 - Luck";
 
+            internal static readonly ConfigInfo<Toggle> UseVanillaLuck = new(
+                Group,
+                "Use Vanilla Luck",
+                "Use the game's own lucky craft chance and multi craft stacking, so the mode only changes how big a lucky craft is. " +
+                "Follows the game (and other mods) if they change the chance. When on, Bonus Chance and Stack Multi Craft Bonus are ignored.",
+                Toggle.On,
+                true);
+
             internal static readonly ConfigInfo<float> BonusChance = new(
                 Group,
                 "Bonus Chance",
                 new ConfigDescription(
-                    "Chance of a lucky craft at skill level 100, scaled down by your skill level (at level 50 it is half). The game uses 0.25. Not used in Vanilla mode.",
+                    "Chance of a lucky craft at skill level 100, scaled down by your skill level (at level 50 it is half). The game uses 0.25. Not used in Vanilla mode or with Use Vanilla Luck.",
                     new AcceptableValueRange<float>(0f, 1f)),
                 0.25f,
                 true);
@@ -62,7 +70,7 @@ internal static class Constants
                 Group,
                 "Stack Multi Craft Bonus",
                 "Vanilla behavior when crafting several at once (Shift + Craft): every further lucky roll in the same craft gives one more bonus than the previous one (+1, +2, +3...), " +
-                "so crafting 5 at once is luckier than crafting one by one. Turn off to make every lucky roll give the same bonus. Not used in Vanilla mode.",
+                "so crafting 5 at once is luckier than crafting one by one. Turn off to make every lucky roll give the same bonus. Not used in Vanilla mode or with Use Vanilla Luck.",
                 Toggle.On,
                 true);
 

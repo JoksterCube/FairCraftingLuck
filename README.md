@@ -34,7 +34,7 @@ FairCraftingLuck makes a lucky craft give a **whole extra batch**: 10 nails beco
 | **Vanilla** | +1 | Unchanged game behavior, the mod stays out of crafting. |
 | **NoBonus** | +0 | Lucky crafts are turned off. |
 
-The chance of a lucky craft works like vanilla: up to 25% per craft at skill level 100, lower at lower levels. With default settings, single-item recipes (like mead bases) behave like vanilla in every mode except NoBonus.
+By default the chance of a lucky craft is the game's own: up to 25% per craft at skill level 100, lower at lower levels. If a game update changes it, the mod follows. With default settings, single-item recipes (like mead bases) behave like vanilla in every mode except NoBonus.
 
 ---
 
@@ -43,13 +43,14 @@ The chance of a lucky craft works like vanilla: up to 25% per craft at skill lev
 | Setting | Default | What it does |
 | --- | --- | --- |
 | **Crafting Luck Mode** | Fair | Fair, LevelBased, Vanilla or NoBonus. |
-| **Bonus Chance** | 0.25 | Chance of a lucky craft at skill level 100, scaled down by skill level. |
-| **Stack Multi Craft Bonus** | On | Vanilla behavior for Shift + Craft (5 at once): each further lucky roll in the same craft gives one more bonus than the last (+1, +2, +3 batches). This is why crafting 5 at once is luckier than one by one. Turn off to make every lucky roll equal. |
+| **Use Vanilla Luck** | On | Use the game's own chance and multi craft stacking, so the mode only changes the size of a lucky craft. Follows the game, and other mods, if they change the chance. Overrides the two settings below; turn it off to set your own. |
+| **Bonus Chance** | 0.25 | Chance of a lucky craft at skill level 100, scaled down by skill level. Not used while Use Vanilla Luck is on. |
+| **Stack Multi Craft Bonus** | On | Vanilla behavior for Shift + Craft (5 at once): each further lucky roll in the same craft gives one more bonus than the last (+1, +2, +3 batches). This is why crafting 5 at once is luckier than one by one. Turn off to make every lucky roll equal. Not used while Use Vanilla Luck is on. |
 | **Excluded Items** | *(empty)* | Comma-separated item prefab names (for example `ArrowCarapace, BombOoze`) that act fully vanilla. These are the item IDs used by the `spawn` console command. |
 | **Show Lucky Craft Odds** | On | Shows your chance and bonus under the recipe description. Your own choice, not synced. |
 | **Show Lucky Craft Message** | On | Announces a lucky craft in the center of the screen, like "Lucky craft! +10 Nails". Your own choice, not synced. |
 
-Bonus Chance and Stack Multi Craft Bonus do not apply in Vanilla mode or to excluded items.
+Use Vanilla Luck, Bonus Chance and Stack Multi Craft Bonus do not apply in Vanilla mode or to excluded items, which act fully vanilla.
 
 Like in vanilla, only stackable items can be lucky. Weapons, armor, tools and upgrades never get a lucky craft, in any mode.
 
@@ -94,5 +95,5 @@ Report bugs or suggest improvements on [GitHub](https://github.com/JoksterCube/F
 ---
 
 **Author:** JoksterCube<br>
-**Version:** 1.0.1<br>
+**Version:** 1.1.0<br>
 **License:** MIT

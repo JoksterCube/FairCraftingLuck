@@ -21,6 +21,14 @@ internal static class CraftBonus
         !PatchGuard.IsDisabled(Feature) &&
         !IsExcluded(recipe);
 
+    // Chance of a lucky roll at skill level 100: the game's own value, or the Bonus Chance setting.
+    internal static float LuckChance(InventoryGui gui) =>
+        PluginConfig.UseVanillaLuck.IsOn() ? gui.m_craftBonusChance : PluginConfig.BonusChance.Value;
+
+    // The game always stacks lucky rolls in a multi craft.
+    internal static bool StackLuckyRolls() =>
+        PluginConfig.UseVanillaLuck.IsOn() || PluginConfig.StackMultiCraftBonus.IsOn();
+
     // Replaces InventoryGui.m_craftBonusChance in the game's bonus loop.
     internal static float GameBonusChance(InventoryGui gui) => IsActiveFor(gui.m_craftRecipe) ? 0f : gui.m_craftBonusChance;
 
@@ -80,8 +88,8 @@ internal static class CraftBonus
         int bonus = CraftBonusCalculator.TotalBonus(
             perRoll,
             crafts,
-            skillFactor * PluginConfig.BonusChance.Value,
-            PluginConfig.StackMultiCraftBonus.IsOn(),
+            skillFactor * LuckChance(gui),
+            StackLuckyRolls(),
             () => UnityEngine.Random.value);
         if (bonus <= 0) return 0;
 
