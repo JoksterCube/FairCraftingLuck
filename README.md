@@ -17,6 +17,12 @@ FairCraftingLuck makes a lucky craft give a **whole extra batch**: 10 nails beco
 	<img src="https://raw.githubusercontent.com/JoksterCube/FairCraftingLuck/refs/heads/main/Screenshots/OddsMultiCraft.png" alt="Crafting panel for 5 crafts at once, where each lucky roll gives 20 more arrows than the last" width="320">
 </p>
 
+**Cooking too.** At the cauldron, your Cooking skill drives the chance, and recipes that make several give a whole extra batch.
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/JoksterCube/FairCraftingLuck/refs/heads/main/Screenshots/Cooking.png" alt="Cauldron recipe for Queen's Jam x4 with a lucky craft bonus of +4" width="320">
+</p>
+
 ---
 
 ### 🎲 Modes
@@ -88,5 +94,5 @@ Report bugs or suggest improvements on [GitHub](https://github.com/JoksterCube/F
 ---
 
 **Author:** JoksterCube<br>
-**Version:** 1.0.0<br>
+**Version:** 1.0.1<br>
 **License:** MIT

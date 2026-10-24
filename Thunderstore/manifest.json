@@ -1,6 +1,6 @@
 {
   "name": "FairCraftingLuck",
-  "version_number": "1.0.0",
+  "version_number": "1.0.1",
   "website_url": "https://github.com/JoksterCube/FairCraftingLuck",
   "description": "Lucky crafts give a whole extra batch: 20 extra arrows instead of 1. Choose Fair, Level Based, Vanilla or no bonus; servers can enforce it.",
   "dependencies": [

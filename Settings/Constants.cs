@@ -9,7 +9,7 @@ internal static class Constants
     internal static class Plugin
     {
         internal const string ModName = "FairCraftingLuck";
-        internal const string ModVersion = "1.0.0";
+        internal const string ModVersion = "1.0.1";
         internal const string Author = "JoksterCube";
         internal const string ModGUID = $"{Author}.{ModName}";
         internal const string Description = "Lucky crafts give a whole extra batch: 10 extra nails instead of 1. Choose Fair, Level Based, Vanilla or no bonus; servers can enforce it.";
