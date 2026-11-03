@@ -49,6 +49,7 @@ By default the chance of a lucky craft is the game's own: up to 25% per craft at
 | **Excluded Items** | *(empty)* | Comma-separated item prefab names (for example `ArrowCarapace, BombOoze`) that act fully vanilla. These are the item IDs used by the `spawn` console command. |
 | **Show Lucky Craft Odds** | On | Shows your chance and bonus under the recipe description. Your own choice, not synced. |
 | **Show Lucky Craft Message** | On | Announces a lucky craft in the center of the screen, like "Lucky craft! +10 Nails". Your own choice, not synced. |
+| **Show Upgrade Odds** | On | At the ancient upgrade station, shows the chance that your item is upgraded, drops a level or is destroyed. Your own choice, not synced. |
 
 Use Vanilla Luck, Bonus Chance and Stack Multi Craft Bonus do not apply in Vanilla mode or to excluded items, which act fully vanilla.
 
@@ -66,6 +67,20 @@ Select a recipe at a crafting station to see your odds under its description, fo
 > Crafting x5: 5 rolls, each lucky roll gives +10 more than the last
 
 Hold Shift to see the odds for crafting several at once.
+
+When another mod raises the game's lucky craft chance for a while (like the Fortune's Boon Rite of TempestRite), the odds show it, for example "Lucky craft: 0.5% chance (2x luck), +20". With Use Vanilla Luck off, your Bonus Chance is raised just as much.
+
+
+### ⚒️ Upgrade odds
+
+At the ancient upgrade station, the panel shows what can happen to the selected item, for example:
+
+> Upgrade odds:
+> 65% upgraded to level 4
+> 25% drops to level 2
+> 10% destroyed (50% of materials back)
+
+The chances come from the game, so they follow any game update or mod that changes them. The mod only shows them; upgrading works as in vanilla.
 
 ---
 
@@ -95,5 +110,5 @@ Report bugs or suggest improvements on [GitHub](https://github.com/JoksterCube/F
 ---
 
 **Author:** JoksterCube<br>
-**Version:** 1.1.1<br>
-**License:** MIT
+**Version:** 1.2.0<br>
+**License:** GNU GPL v3 or later

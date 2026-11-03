@@ -9,7 +9,7 @@ internal static class Constants
     internal static class Plugin
     {
         internal const string ModName = "FairCraftingLuck";
-        internal const string ModVersion = "1.1.1";
+        internal const string ModVersion = "1.2.0";
         internal const string Author = "JoksterCube";
         internal const string ModGUID = $"{Author}.{ModName}";
         internal const string Description = "Lucky crafts give a whole extra batch: 10 extra nails instead of 1. Choose Fair, Level Based, Vanilla or no bonus; servers can enforce it.";
@@ -97,6 +97,13 @@ internal static class Constants
                 Group,
                 "Show Lucky Craft Message",
                 "Announce a lucky craft on screen, for example \"Lucky craft! +10 Nails\". If off, only the game's small +N popup shows.",
+                Toggle.On,
+                false);
+
+            internal static readonly ConfigInfo<Toggle> ShowUpgradeOdds = new(
+                Group,
+                "Show Upgrade Odds",
+                "At the ancient upgrade station, show the chance that your item is upgraded, drops a level or is destroyed, under the recipe description.",
                 Toggle.On,
                 false);
         }

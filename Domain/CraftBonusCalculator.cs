@@ -26,6 +26,11 @@ internal static class CraftBonusCalculator
         return items;
     }
 
+    // How many times the game's lucky craft chance was raised by other mods (a blessing, say): its chance now over its
+    // chance as the crafting panel was made. 1 when that isn't known.
+    internal static float OtherModsLuck(float gameChance, float currentChance) =>
+        gameChance > 0f && currentChance >= 0f ? currentChance / gameChance : 1f;
+
     // Extra items one lucky roll gives, before multi craft stacking.
     // batchAmount: items one craft of the recipe makes (10 for nails).
     // skillFactor: crafting skill level / 100.

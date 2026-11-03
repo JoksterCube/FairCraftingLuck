@@ -40,7 +40,7 @@ internal static class InventoryGuiUpdateRecipePatch
         float skillFactor = player.GetSkillFactor(station!.m_craftingSkill);
 
         if (!CraftBonus.IsActiveFor(recipe))
-            return LuckOddsText.Format(skillFactor * gui.m_craftBonusChance, gui.m_craftBonusAmount, rolls, true);
+            return LuckOddsText.Format(skillFactor * gui.m_craftBonusChance, gui.m_craftBonusAmount, rolls, true, CraftBonus.OtherModsLuck(gui));
 
         CraftingLuckMode mode = PluginConfig.Mode.Value;
         if (mode == CraftingLuckMode.NoBonus) return null;
@@ -49,6 +49,7 @@ internal static class InventoryGuiUpdateRecipePatch
             skillFactor * CraftBonus.LuckChance(gui),
             perRoll,
             rolls,
-            CraftBonus.StackLuckyRolls());
+            CraftBonus.StackLuckyRolls(),
+            CraftBonus.OtherModsLuck(gui));
     }
 }

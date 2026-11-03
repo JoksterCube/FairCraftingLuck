@@ -134,6 +134,24 @@ public class LuckOddsTextTests
     [Fact]
     public void Multi_craft_without_stacking_only_shows_rolls() =>
         Assert.EndsWith("Crafting x5: 5 rolls</color>", LuckOddsText.Format(0.25f, 10, 5, false));
+
+    [Fact]
+    public void Luck_raised_by_other_mods_is_shown() =>
+        Assert.Equal("\n\n<color=#E8BE60>Lucky craft: 50% chance (2x luck), +20</color>", LuckOddsText.Format(0.5f, 20, 1, true, 2f));
+
+    [Fact]
+    public void Unraised_luck_is_not_shown() =>
+        Assert.DoesNotContain("luck)", LuckOddsText.Format(0.25f, 20, 1, true, 1f));
+}
+
+public class OtherModsLuckTests
+{
+    [Theory]
+    [InlineData(0.25f, 0.5f, 2f)]
+    [InlineData(0.25f, 0.25f, 1f)]
+    [InlineData(0f, 0.5f, 1f)]
+    public void Is_the_ratio_to_the_game_chance(float game, float current, float expected) =>
+        Assert.Equal(expected, CraftBonusCalculator.OtherModsLuck(game, current), 3);
 }
 
 public class LuckyCraftMessageTests
@@ -141,4 +159,52 @@ public class LuckyCraftMessageTests
     [Fact]
     public void Message_names_the_bonus_and_item() =>
         Assert.Equal("<color=#E8BE60>Lucky craft!</color> +10 Nails", LuckOddsText.LuckyCraft("+10", "Nails"));
+}
+
+public class UpgradeOddsTests
+{
+    [Fact]
+    public void Default_upgrader_chances_split_into_three_outcomes()
+    {
+        UpgradeOdds odds = UpgradeOdds.From(0.65f, 0.1f);
+        Assert.Equal(0.65f, odds.Upgrade, 3);
+        Assert.Equal(0.1f, odds.Destroy, 3);
+        Assert.Equal(0.25f, odds.Downgrade, 3);
+    }
+
+    [Fact]
+    public void Upgrade_wins_when_the_chances_overlap()
+    {
+        // The game checks the upgrade first, so only what is left can break.
+        UpgradeOdds odds = UpgradeOdds.From(0.8f, 0.5f);
+        Assert.Equal(0.8f, odds.Upgrade, 3);
+        Assert.Equal(0.2f, odds.Destroy, 3);
+        Assert.Equal(0f, odds.Downgrade, 3);
+    }
+
+    [Fact]
+    public void Chances_are_kept_between_0_and_1()
+    {
+        UpgradeOdds odds = UpgradeOdds.From(1.5f, -1f);
+        Assert.Equal(1f, odds.Upgrade, 3);
+        Assert.Equal(0f, odds.Destroy, 3);
+        Assert.Equal(0f, odds.Downgrade, 3);
+    }
+}
+
+public class UpgradeOddsTextTests
+{
+    [Fact]
+    public void Shows_every_outcome() =>
+        Assert.Equal(
+            "\n\n<color=#E8BE60>Upgrade odds:\n65% upgraded to level 4\n25% drops to level 2\n<color=#E06C5C>10% destroyed (50% of materials back)</color></color>",
+            LuckOddsText.Upgrade(UpgradeOdds.From(0.65f, 0.1f), 3, 0.5f));
+
+    [Fact]
+    public void Leaves_out_outcomes_that_cannot_happen()
+    {
+        string text = LuckOddsText.Upgrade(UpgradeOdds.From(0.8f, 0.2f), 3, 0f);
+        Assert.DoesNotContain("drops", text);
+        Assert.DoesNotContain("materials", text);
+    }
 }

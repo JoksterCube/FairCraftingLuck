@@ -1,5 +1,6 @@
 | Version | Update Notes |
 |----------|---------------|
+| **1.2.0** | - Works with mods that raise the game's lucky craft chance for a while (like the Fortune's Boon Rite of TempestRite): the odds show the raised chance and how much luck it adds, as in "Lucky craft: 0.5% chance (2x luck), +20", and with Use Vanilla Luck off, your Bonus Chance is raised just as much.<br>- New **Show Upgrade Odds** setting: at the ancient upgrade station, see the chance that your item is upgraded, drops a level or is destroyed, and how much of the materials come back. On by default.<br>- The mod is now licensed under GNU GPL v3. |
 | **1.1.1** | - Clearer mod page: explains that the game's own chance is used by default, and which settings Use Vanilla Luck replaces. |
 | **1.1.0** | - New **Use Vanilla Luck** setting: keep the game's own lucky craft chance and multi craft stacking, and let the mode change only the size of a lucky craft. On by default, so the mod follows the game if the chance ever changes. Turn it off to use your own Bonus Chance and Stack Multi Craft Bonus again. |
 | **1.0.1** | - Added screenshots to the mod page, including cooking at the cauldron.<br>- Clearer setting descriptions. |

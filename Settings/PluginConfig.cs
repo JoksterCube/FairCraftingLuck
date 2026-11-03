@@ -16,6 +16,7 @@ internal static class PluginConfig
 
     internal static ConfigEntry<Toggle> ShowLuckOdds = null!;
     internal static ConfigEntry<Toggle> ShowLuckyCraftMessage = null!;
+    internal static ConfigEntry<Toggle> ShowUpgradeOdds = null!;
 
     internal static void Build(ConfigFile config, ConfigSync configSync)
     {
@@ -30,5 +31,6 @@ internal static class PluginConfig
 
         ShowLuckOdds = ConfigOptions.Config(Display.ShowLuckOdds);
         ShowLuckyCraftMessage = ConfigOptions.Config(Display.ShowLuckyCraftMessage);
+        ShowUpgradeOdds = ConfigOptions.Config(Display.ShowUpgradeOdds);
     }
 }

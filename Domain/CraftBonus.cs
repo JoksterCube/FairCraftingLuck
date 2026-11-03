@@ -21,9 +21,20 @@ internal static class CraftBonus
         !PatchGuard.IsDisabled(Feature) &&
         !IsExcluded(recipe);
 
-    // Chance of a lucky roll at skill level 100: the game's own value, or the Bonus Chance setting.
+    // The game's lucky craft chance as the crafting panel was made, before other mods raise it for a while.
+    private static float _gameChance;
+
+    internal static void PanelMade(InventoryGui gui) => _gameChance = gui.m_craftBonusChance;
+
+    // How many times other mods raised the game's chance for now (2 while doubled), so the Bonus Chance setting gets it too.
+    internal static float OtherModsLuck(InventoryGui gui) => CraftBonusCalculator.OtherModsLuck(_gameChance, gui.m_craftBonusChance);
+
+    // Chance of a lucky roll at skill level 100: the game's own value, or the Bonus Chance setting raised as much as
+    // other mods raised the game's own.
     internal static float LuckChance(InventoryGui gui) =>
-        PluginConfig.UseVanillaLuck.IsOn() ? gui.m_craftBonusChance : PluginConfig.BonusChance.Value;
+        PluginConfig.UseVanillaLuck.IsOn()
+            ? gui.m_craftBonusChance
+            : Math.Min(1f, PluginConfig.BonusChance.Value * OtherModsLuck(gui));
 
     // The game always stacks lucky rolls in a multi craft.
     internal static bool StackLuckyRolls() =>
