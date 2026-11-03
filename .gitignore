@@ -10,3 +10,6 @@ riderModule.iml
 /Thunderstore/README.md
 environment.props.user
 Nexus/
+
+# Editor settings
+.vscode/
