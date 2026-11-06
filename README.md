@@ -110,5 +110,5 @@ Report bugs or suggest improvements on [GitHub](https://github.com/JoksterCube/F
 ---
 
 **Author:** JoksterCube<br>
-**Version:** 1.2.0<br>
+**Version:** 1.2.1<br>
 **License:** GNU GPL v3 or later
